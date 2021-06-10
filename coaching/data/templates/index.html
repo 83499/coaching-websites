@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'ajaysir.png' %}" type="image/x-icon"/>
+    <title>Dimension Classes</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="{% static 'ajaysir.png' %}"  alt="My image" style="
+      width: 3rem;
+      height: 3rem;
+      margin-top:0;
+    " ></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#topics">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/About Us">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#footer_shivam">Contact</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> -->
+      </ul>
+      <form class="d-flex">
+        <!-- <input class="form-control me-2 mt-2 " type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary me-2 mt-2" type="submit">Search</button> -->
+      </form>
+      {% if user.is_authenticated %}
+      <a class = "user "href ="">  hello ! {{user.username}}</a> 
+      <a href ="/logout"> <button class="btn btn-outline-light me-2 mt-2" >Logout</button></a> 
+      {% else %}
+      <!-- <a href="/create"><button class="btn btn-outline-light me-2 mt-2" >Sign Up</button></a> -->
+      <a href ="/login"> <button class="btn btn-outline-light me-2 mt-2" >Login</button></a> 
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<img src="{% static 'ajaysir.png' %}" class=" ajay rounded mx-auto d-block" alt="My image">
+<style>
+  .user{
+    text-decoration: none;
+    color:white;
+    margin-right:2rem;
+    margin-left:2rem;
+  }
+  .user:hover{
+    text-decoration: underline;
+    color:white;
+  }
+.ajay{
+  margin-top:4rem;
+  width:25rem;
+  height:25rem;
+}
+</style>
+{% comment %} javascript text animation {% endcomment %}
+<h1 class =  "cent">Ajay Dubey Sir</h1>
+<div class = "container">
+<span class=" txt-type" data-wait = "2000" data-words = ' ["Hello Students !" ,"I am having 17 years of teaching experience" , "in teaching Maths and Science" , "of Class IX and X"]'></span>
+</div>
+<style>
+.cent{
+text-align: center;
+color:#ff7b54;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 3rem;
+  text-align: center;
+  font-size:2rem;
+  color:#325288;
+}
+</style>
+<script>
+ 
+class TypeWriter {
+  constructor(txtElement, words, wait = 2000) {
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+  }
+
+  type() {
+    // Current index of word
+    const current = this.wordIndex % this.words.length;
+    // Get full text of current word
+    const fullTxt = this.words[current];
+
+    // Check if deleting
+    if(this.isDeleting) {
+      // Remove char
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      // Add char
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    // Insert txt into element
+    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+    // Initial Type Speed
+    let typeSpeed = 100;
+
+    if(this.isDeleting) {
+      typeSpeed /= 2;
+    }
+
+    // If word is complete
+    if(!this.isDeleting && this.txt === fullTxt) {
+      // Make pause at end
+      typeSpeed = this.wait;
+      // Set delete to true
+      this.isDeleting = true;
+    } else if(this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      // Move to next word
+      this.wordIndex++;
+      // Pause before start typing
+      typeSpeed = 500;
+    }
+
+    setTimeout(() => this.type(), typeSpeed);
+  }
+}
+
+
+// Init On DOM Load
+document.addEventListener('DOMContentLoaded', init);
+
+// Init App
+function init() {
+  const txtElement = document.querySelector('.txt-type');
+  const words = JSON.parse(txtElement.getAttribute('data-words'));
+  const wait = txtElement.getAttribute('data-wait');
+  // Init TypeWriter
+  new TypeWriter(txtElement, words, wait);
+}
+</script>
+
+
+<!-- Classes ix x maths and science setup -->
+
+<div class = " container-fluid " id = "topics">
+
+  <div class = "row">
+    {% for i in data|slice:":" %}
+    <div class="col-lg-4 col-sm-12">
+      
+      <img  src="/media/{{i.standard_img}}">
+
+      <h3 class = "set"> {{i.standard}}</h3>
+      <p class = "sett">{{i.description}}</p>
+      <div class="d-grid gap-2 col-6 mx-auto"></div>
+
+     
+
+       <a class = "ref" href="{{i.standard}}"><button class="btn btn-secondary button" type="button">Click to watch videos</button></a> 
+       
+          
+        </div>
+      {% endfor %}
+    </div>
+    
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<style>
+
+  .ref{
+    text-decoration: none;
+  }
+ 
+  .sett{
+    font-size:1rem;
+  }
+  .set{
+  margin-top:1rem;
+  text-align: center;
+  }
+  .button{
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+   
+  }
+  img{
+    margin-top:3rem;
+    border-radius: 50%;
+  width:15rem;
+  height:15rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  }
+</style>
+
+
+<!-- footer setup  -->
+
+<div class="container-fluid footer" id = "footer_shivam">
+
+  <!-- {% if user.is_authenticated %}
+
+  {% else %}
+   
+   <div class="text-center signup"> <span class = ""> Register for free   <a href = "/create"><Button> Sign up</Button></a> </span>  </div>  
+    {% endif %} -->
+  
+<div class="row" style = "padding-top:1rem;">
+  <div class="col-lg-6 text-center">
+    <p> For Enquires / Information</p> 
+    <p>Contact : 9981755555</p>
+  </div>
+  <div class="col-lg-6 text-center">
+   
+     <a href="https://www.facebook.com/ajay.dubey.75470"> <img src="{% static 'facebook.png' %}" class="facebook" alt="My image"></a>
+    
+      <a href=""> <img src="{% static 'yt.png' %}" class="instagram" alt="My image"></a>
+    
+  </div>
+  <div class="col-lg-12 text-center" style="
+  margin-top: 12px;
+  margin-bottom: 12px;
+">
+    © 2020-2021 <a  href = "https://83499.github.io/simple_portfolio_website/" class = "shivam">Shivam Ramani</a>
+  </div>
+</div>
+
+</div>
+
+
+
+<style>
+  .shivam  { 
+   text-decoration: none;
+   color:white;
+  
+  }
+  .shivam:hover{
+    text-decoration: underline;
+    color:white;
+  }
+  .facebook ,.instagram{
+    height:50px;
+    width:50px;
+    display: inline-block;
+    margin:0;
+   
+  }
+ .facebook{
+   margin-right:25%;
+   background-color:white;
+ }
+ .instagram:hover{
+  border: 2px solid white;
+
+ }
+ .facebook:hover{
+  border: 2px solid white;
+
+ }
+ 
+  p{
+    font-size: 1rem;
+  }
+ .signup{
+   margin-bottom:2rem;
+   padding-top:2rem;
+
+ }
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+  span{
+    font-size:1.5rem;
+    font-family:Roboto;
+   
+  }
+button{
+  background-color: red;
+  border: none;
+  color: white;
+  padding-left: 2rem;
+  padding-right:2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+  border-radius: 25px;
+}
+.footer{
+  color:white;
+  margin-top:4rem;
+  background-color:#1b1717;
+}
+
+</style>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

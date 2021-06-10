@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'ajaysir.png' %}" type="image/x-icon"/>
+  <title>Dimension Classes</title>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="{% static 'ajaysir.png' %}" alt="My image" style="
+          width: 3rem;
+          height: 3rem;
+          margin-top:0;
+        "></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li> -->
+          <!-- <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+        </ul>
+        <form class="d-flex">
+          <!-- <input class="form-control me-2 mt-2 " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary me-2 mt-2" type="submit">Search</button> -->
+        </form>
+        {% if user.is_authenticated %}
+        <a class="user " href=""> hello ! {{user.username}}</a>
+        <a href="/logout"> <button class="btn btn-outline-light me-2 mt-2">Logout</button></a>
+        {% else %}
+        <!-- <a href="/create"><button class="btn btn-outline-light me-2 mt-2">Sign Up</button></a> -->
+        <a href="/login"> <button class="btn btn-outline-light me-2 mt-2">Login</button></a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <style>
+    .user {
+      text-decoration: none;
+      color: white;
+      margin-right: 2rem;
+      margin-left: 2rem;
+    }
+
+    .user:hover {
+      text-decoration: underline;
+      color: white;
+    }
+
+    .ajay {
+      margin-top: 4rem;
+      width: 25rem;
+      height: 25rem;
+    }
+  </style>
+
+  {% comment %} javascript text animation {% endcomment %}
+  <!-- <h1 class =  "cent">Ajay Dubey Sir</h1> -->
+  <div class="container">
+    <span class=" txt-type" data-wait="2000"
+      data-words=' ["Hello Students !" ,"I am having 17 years of teaching experience" , "in teaching Maths and Science" , "of Class IX and X"]'></span>
+  </div>
+  <style>
+    .cent {
+      text-align: center;
+      color: #ff7b54;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 0 3rem;
+      text-align: center;
+      font-size: 2rem;
+      color: #325288;
+    }
+  </style>
+
+
+
+
+  <!-- navvar end  -->
+
+
+
+  <!-- main content video embedded and side player -->
+
+
+  <div class="container-fluid">
+    <div class="row" >
+
+      <div class="col-lg-8">
+        <iframe id="link" width="100%" height="425rem;" src="https://www.youtube.com/embed/fhBYrqYU13w">
+        </iframe>
+        <h4 class = "text-center" id = "title" style="padding-top:1rem;"> Title</h4>
+        <p  id = "description" style="padding:1rem;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque eius enim
+          ullam provident dignissimos expedita, veritatis voluptas doloremque libero velit error id optio. Architecto
+          facilis modi enim perspiciatis unde.</p>
+      </div>
+      <div class="col-lg-4" style= "padding-right:0; padding-left: 0;" id = "sidebar">
+        <h5  style = "padding-top: 1rem; margin:1rem;">Topics Covered in this Section</h5>
+
+
+
+        <ol type="1">
+<li onclick = "myfunction()">Chapter 1 </li>
+<li onclick = "myfunction2()">Chapter 2 </li>
+<li onclick = "myfunction3()">Chapter 3 </li>
+<li onclick = "myfunction4()">Chapter 4 </li>
+<li onclick = "myfunction5()">Chapter 5 </li>
+<li onclick = "myfunction6()">Chapter 6 </li>
+<li onclick = "myfunction7()">Chapter 7 </li>
+<li onclick = "myfunction8()">Chapter 8 </li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function myfunction() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/fhBYrqYU13w";
+  
+     
+    }
+    function myfunction2() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/8WHxCww2gUk";
+      // document.getElementById("title").innerHTML = "hello";
+      // document.getElementById("description").innerHTML = "i am awesome";
+    }
+    function myfunction3() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/r1VLZUS37-E";
+     
+    }
+    function myfunction3() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/r1VLZUS37-E";
+    
+    }
+    function myfunction4() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/LRZzpsmBtV0";
+     
+    }
+    function myfunction5() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/9SBNCYkSceU";
+      
+    }
+    function myfunction6() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/nc26Kiq0B0g";
+      
+    }
+    function myfunction7() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/IRmE2AiabUY";
+     
+    }
+    function myfunction8() {
+      document.getElementById("link").src = "https://www.youtube.com/embed/gv9hrQzU0cA";
+     
+    }
+
+  </script>
+ 
+  <style>
+     li{
+    margin:1rem;
+  }
+
+
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .container-fluid {
+      margin: 0;
+      padding: 0;
+    }
+
+    #link {
+      margin: 0;
+      padding: 0;
+    }
+
+    li:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+
+
+<div class="container-fluid footer" id = "footer_shivam">
+
+  <!-- {% if user.is_authenticated %}
+
+  {% else %}
+   
+   <div class="text-center signup"> <span class = ""> Register for free   <a href = "/create"><Button> Sign up</Button></a> </span>  </div>  
+    {% endif %} -->
+  
+<div class="row" style = "padding-top:1rem;">
+  <div class="col-lg-6 text-center">
+    <p> For Enquires / Information</p> 
+    <p>Contact : 9981755555</p>
+  </div>
+  <div class="col-lg-6 text-center">
+   
+     <a href="https://www.facebook.com/ajay.dubey.75470"> <img src="{% static 'facebook.png' %}" class="facebook" alt="My image"></a>
+    
+      <a href=""> <img src="{% static 'yt.png' %}" class="instagram" alt="My image"></a>
+    
+  </div>
+  <div class="col-lg-12 text-center" style="
+  margin-top: 12px;
+  margin-bottom: 12px;
+">
+    © 2020-2021 <a  href = "https://83499.github.io/simple_portfolio_website/" class = "shivam">Shivam Ramani</a>
+  </div>
+</div>
+
+</div>
+
+
+
+<style>
+  .shivam  { 
+   text-decoration: none;
+   color:white;
+  
+  }
+  .shivam:hover{
+    text-decoration: underline;
+    color:white;
+  }
+  .facebook ,.instagram{
+    height:50px;
+    width:50px;
+    display: inline-block;
+    margin:0;
+   
+  }
+ .facebook{
+   margin-right:25%;
+   border-radius: 50%;
+   background-color: white;
+ }
+ .instagram:hover{
+  border: 2px solid white;
+  border-radius: 50%;
+ 
+
+ }
+ .facebook:hover{
+  border: 2px solid white;
+
+ }
+ 
+  p{
+    font-size: 1rem;
+  }
+ .signup{
+   margin-bottom:2rem;
+   padding-top:2rem;
+
+ }
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+  span{
+    font-size:1.5rem;
+    font-family:Roboto;
+   
+  }
+button{
+  background-color: red;
+  border: none;
+  color: white;
+  padding-left: 2rem;
+  padding-right:2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+  border-radius: 25px;
+}
+.footer{
+  color:white;
+  margin-top:4rem;
+  background-color:#1b1717;
+}
+
+</style>
+   
+
+
+
+  <!-- footer content -->
+  <!-- <div class="container-fluid footer">
+
+      {% if user.is_authenticated %}
+    
+      {% else %}
+       
+       <div class="text-center signup"> <span class = ""> Register for free   <a href = "/create"><Button> Sign up</Button></a> </span>  </div>  
+        {% endif %}
+      
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <p> For Enquires / Information</p> 
+        <p>Contact : 98XXXXXXXXX</p>
+      </div>
+      <div class="col-lg-6 text-center">
+       
+         <a href=""> <img src="{% static 'facebook.png' %}" class="facebook" alt="My image"></a>
+        
+          <a href=""> <img src="{% static 'insta.png' %}" class="instagram" alt="My image"></a>
+        
+      </div>
+      <div class="col-lg-12 text-center" style="
+      margin-top: 12px;
+      margin-bottom: 12px;
+    ">
+        © 2020-2021 <a class = "shivam">Shivam Ramani</a>
+      </div>
+    </div>
+    
+    </div>
+    
+    
+    
+    <style>
+      .shivam  { 
+       text-decoration: none;
+       color:white;
+      
+      }
+      .shivam:hover{
+        text-decoration: underline;
+        color:white;
+      }
+      .facebook ,.instagram{
+        height:50px;
+        width:50px;
+        display: inline-block;
+        margin:0;
+       
+      }
+     .facebook{
+       margin-right:25%;
+       background-color:white;
+     }
+     .instagram:hover{
+      border: 2px solid white;
+    
+     }
+     .facebook:hover{
+      border: 2px solid white;
+    
+     }
+     
+      p{
+        font-size: 1rem;
+      }
+     .signup{
+       margin-bottom:2rem;
+       padding-top:2rem;
+    
+     }
+    
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+      span{
+        font-size:1.5rem;
+        font-family:Roboto;
+       
+      }
+    button{
+      background-color: red;
+      border: none;
+      color: white;
+      padding-left: 2rem;
+      padding-right:2rem;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1.5rem;
+      margin: 4px 2px;
+      border-radius: 25px;
+    }
+    .footer{
+      color:white;
+      margin-top:4rem;
+      background-color:#1b1717;
+    }
+    
+    </style>
+       
+
+ -->
+
+
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

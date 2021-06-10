@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" href="{% static 'ajaysir.png' %}" type="image/x-icon"/>
+    <title>Dimension Classes</title>
+  </head>
+  <body>
+    {% for message in messages %}
+    <div class="alerts">
+     <span> {{message}} </span> 
+    </div>
+     {% endfor %}
+
+    <style>
+      .alerts{
+      
+        font-size: 1.5rem;
+        color:white;
+        background-color: #ff7b54;
+        text-align: center;
+      }
+      
+    </style>
+   <div class="container" style = "margin-top: 2%;
+   margin-left:5%;
+   margin-bottom:5rem; 
+   background-color:black;
+   width:20rem;
+   height:fit-content;
+   opacity:0.7;
+   color:white;" >
+
+       
+            <form action = 'create' method = "POST">{% csrf_token %}
+              
+                <div class="form-group">
+                  <label  style = "margin-top:1rem;">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" name = "email" placeholder="">
+                 </div>
+                  <div class="form-group">
+                    <label for="firstname" >First Name </label>
+                    <input type="text" name = "firstname" class="form-control" id="firstname"  placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="lastname">Last Name </label>
+                    <input type="text" class="form-control" id = "lastname" name = "lastname" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Username </label>
+                    <input type="text" class="form-control" id="username" name = "username" placeholder="">
+                  </div>
+                  
+                   <div class="form-group">
+                     <label for="password" >Password</label>
+                     <input type="password" class="form-control" name = "password" placeholder="">
+                   </div>
+                
+                <button style = "margin-bottom:1rem;" type="submit" class="btn btn-primary ">Submit</button>
+              </form>
+            
+    
+    </div>
+    
+<style>
+    body{
+       background-image : url("static/edu.png");
+       background-repeat: no-repeat;
+ 
+       background-size:cover;
+       background-origin: center;
+       margin:0;
+       padding: 0;}
+
+       @media screen and (min-width: 480px) {
+  .container {
+    margin-left:0;
+    margin-right:0;
+  }
+}
+   
+      
+</style>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
